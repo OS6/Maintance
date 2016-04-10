@@ -1,0 +1,24 @@
+﻿@{
+    ViewBag.Title = "FindRooms";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var searchRooms = (List<Model.VIEWMODEL.PHONG_VIEWMODEL>)ViewBag.SearchRooms;
+}
+@section searchrooms
+{
+    <div class="tels">
+        <div class="container">
+            <h1>DANH SÁCH PHÒNG TRỐNG</h1>
+            <br />
+            @foreach (var item in searchRooms)
+            {
+                <div class="col-md-4 tels-left">
+                    <h4>@item.TenPhong<span> @item.DonGia</span><span>đ</span></h4>
+                    <img src="@item.Picture" class="img-responsive" alt="">
+                    <p>@item.ThongTin</p>
+                    <a class="hvr-shutter-in-horizontal" href="@item.Href">Đặt ngay</a>
+                </div>
+            }
+            <div class="clearfix"></div>
+        </div>
+    </div>
+}
