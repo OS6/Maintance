@@ -1,0 +1,71 @@
+﻿@model OnlineHotel.ViewModel.LOAIPHONG_KHACHHANG
+
+@{
+    ViewBag.Title = "Booking";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section booking{
+    <div class="details">
+        <div class="container">
+            @{
+                var item = Model;
+                <div class="col-md-7 details-left">
+                    <img src=@item.HinhAnh class="img-responsive" alt="">
+                </div>
+                <div class="col-md-5 details-right">
+                    <h4> @item.TenLP  - <span>@item.DonGia</span></h4>
+                    <p>@item.ChiTiet</p>
+                </div>
+            }
+            <div class="select2-active"></div>
+            <div class="clearfix"></div>
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
+
+
+                <div class="col-md-10" hidden="hidden">
+                    @Html.EditorFor(model => model.idLP)
+                    @Html.ValidationMessageFor(model => model.idLP)
+                </div>
+                <div class="booking-form">
+                    <div class="col-md-6">
+                        <h5>HỌ TÊN</h5>
+                        @Html.EditorFor(model => model.HoTen)
+                        @Html.ValidationMessageFor(model => model.HoTen)
+
+                        <h5>CMND</h5>
+                        @Html.EditorFor(model => model.CMND)
+                        @Html.ValidationMessageFor(model => model.CMND)
+
+                        <h5>SĐT</h5>
+
+                        @Html.EditorFor(model => model.SDT)
+                        @Html.ValidationMessageFor(model => model.SDT)
+
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <h5>NGÀY BẮT ĐẦU THUÊ</h5>
+                    @Html.EditorFor(model => model.NgayBatDauThue)
+                    @Html.ValidationMessageFor(model => model.NgayBatDauThue)
+
+                    <h5>NGÀY KẾT THÚC THUÊ</h5>
+                    @Html.EditorFor(model => model.NgayKetThucThue)
+                    @Html.ValidationMessageFor(model => model.NgayKetThucThue)
+
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="REQUIRED" class="btn btn-default" />
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+
+    </div>
+}
+
